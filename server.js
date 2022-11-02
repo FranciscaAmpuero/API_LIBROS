@@ -13,6 +13,7 @@
 const express = require('express') // constante para requerir el modulo de express
 const mysql = require('mysql') // constante para requerir el modulo de mysql
 const myconn = require('express-myconnection') // constante para requerir el modulo de my connection con express
+const cors = require('cors')
 
 const routes = require('./routes') //importamos con una constante las rutas del documento routes.js
 
@@ -32,6 +33,7 @@ const dbOptions = {
 //hacemos la conexion a la base de satos indicandole parametros
 app.use(myconn(mysql, dbOptions, 'single'))
 app.use(express.json()) // agregamos esta extension para ver por la terminal los datos que incluimos en Json
+app.use(cors())
 
 app.get('/', (req, res) =>{
     res.send('welcome to my Api')
